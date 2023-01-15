@@ -265,9 +265,7 @@
             </div>
             <div class="modal-body">
               <div class="mb-3">
-                <label for="form-name" class="form-label"
-                  >Nome</label
-                >
+                <label for="form-name" class="form-label">Nome</label>
                 <input
                   v-model="form.name"
                   type="text"
@@ -277,9 +275,7 @@
                 />
               </div>
               <div class="mb-3">
-                <label for="form-email" class="form-label"
-                  >Email</label
-                >
+                <label for="form-email" class="form-label">Email</label>
                 <input
                   v-model="form.email"
                   type="email"
@@ -299,6 +295,11 @@
                   rows="3"
                 ></textarea>
               </div>
+              <div class="mb-3" v-if="form.status">
+                <div class="alert" :class="form.alert_status" role="alert">
+                  {{ form.status }}
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
               <button
@@ -308,7 +309,11 @@
               >
                 Fechar
               </button>
-              <button type="button" class="btn btn-primary">
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="sendMessafe()"
+              >
                 Envie mensagem
               </button>
             </div>
@@ -339,6 +344,8 @@
               name: "",
               email: "",
               massage: "",
+              error: "",
+              alert_status: "",
             },
             // cards
             images: [
@@ -389,6 +396,23 @@
           };
         },
         methods: {
+          sendMessafe() {
+            // check if the form is empty
+            if (
+              this.form.name === "" ||
+              this.form.email === "" ||
+              this.form.massage === ""
+            ) {
+              this.form.alert_status = "alert-danger";
+              this.form.status = "Preencha todos os campos";
+              return;
+            }
+            this.form.alert_status = "alert-success";
+            this.form.status = "Mensagem enviada com sucesso"
+            // send form
+            
+            console.log(this.form);
+          },
           // format date from '2023-01-14' to 'Segunda-feira, 14 de Janeiro de 2023'
           formatDate(date) {
             const dateObj = new Date(date);
