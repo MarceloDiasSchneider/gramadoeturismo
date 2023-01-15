@@ -113,9 +113,15 @@
               <div class="col-sm-4 offset-md-1 py-4">
                 <h4 class="text-white">Contato</h4>
                 <ul class="list-unstyled">
-                  <!-- opem contant modal -->
+                  <!-- trigger modal -->
                   <li>
-                    <a href="#" class="text-white">Deixe uma menssagem</a>
+                    <a
+                      href="#"
+                      class="text-white"
+                      data-bs-toggle="modal"
+                      data-bs-target="#contact-form"
+                      >Deixe uma menssagem</a
+                    >
                   </li>
                 </ul>
               </div>
@@ -231,6 +237,44 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="contact-form"
+        tabindex="-1"
+        aria-labelledby="contact-formLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="contact-formLabel">
+                Deixe sua mensagem
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Fechar
+              </button>
+              <button type="button" class="btn btn-primary">
+                Envie mensagem
+              </button>
             </div>
           </div>
         </div>
