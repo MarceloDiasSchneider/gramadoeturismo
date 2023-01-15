@@ -81,7 +81,7 @@
   </head>
   <body>
     <main id="app">
-      <header class="sticky-top">
+      <header class="">
         <div class="collapse bg-dark" id="navbarHeader">
           <div class="container">
             <div class="row">
@@ -156,80 +156,74 @@
         </div>
       </header>
 
-      <section>
-        <section class="py-5 text-center container">
-          <div class="row py-lg-5">
-            <div class="col-lg-7 col-md-9 mx-auto">
-              <h1 class="fw-light">Album de fotos de Gramado</h1>
-              <p class="lead text-muted">
-                Este álbum de fotos mostra a beleza, arquitetura e cultura de
-                Gramado, cidade localizada no sul do Brasil conhecida por seus
-                chocolates artesanais e clima europeu. As fotos mostram atrações
-                turísticas, culinária e paisagens pitorescas da cidade. O álbum
-                convida o visitante a uma jornada virtual pela cidade e
-                desfrutar das maravilhas de Gramado.
-              </p>
-              <p>
-                <a href="#" class="btn btn-primary my-2">Main call to action</a>
-                <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-              </p>
-            </div>
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-7 col-md-9 mx-auto">
+            <h1 class="fw-light">Album de fotos de Gramado</h1>
+            <p class="lead text-muted">
+              Este álbum de fotos mostra a beleza, arquitetura e cultura de
+              Gramado, cidade localizada no sul do Brasil conhecida por seus
+              chocolates artesanais e clima europeu. As fotos mostram atrações
+              turísticas, culinária e paisagens pitorescas da cidade. O álbum
+              convida o visitante a uma jornada virtual pela cidade e desfrutar
+              das maravilhas de Gramado.
+            </p>
+            <p>
+              <a href="#" class="btn btn-primary my-2">Main call to action</a>
+              <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+            </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <div class="album py-5 bg-light" id="container-foto">
-          <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-              <div class="col" v-for="image, key in images" :key="key">
-                <div class="card shadow-sm">
-                  <svg
-                    v-if="!image.source"
-                    class="bd-placeholder-img card-img-top"
-                    width="100%"
-                    height="225"
-                    xmlns="http://www.w3.org/2000/svg"
-                    role="img"
-                    aria-label="Placeholder: Thumbnail"
-                    preserveAspectRatio="xMidYMid slice"
-                    focusable="false"
+      <div class="album py-5 bg-light" id="container-foto">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col" v-for="image, key in images" :key="key">
+              <div class="card shadow">
+                <svg
+                  v-if="!image.source"
+                  class="bd-placeholder-img card-img-top"
+                  width="100%"
+                  height="225"
+                  xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                  aria-label="Placeholder: Thumbnail"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                >
+                  <title>{{ image.name }}</title>
+                  <rect width="100%" height="100%" fill="#55595c" />
+                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">
+                    Thumbnail
+                  </text>
+                </svg>
+                <img v-else :src="`img/${image.source}`" :alt="image.name" />
+
+                <div class="card-body">
+                  <h2 class="card-text h5">{{ image.name }}</h2>
+                  <p class="card-text">{{ image.description }}</p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
                   >
-                    <title>{{ image.name }}</title>
-                    <rect width="100%" height="100%" fill="#55595c" />
-                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                      Thumbnail
-                    </text>
-                  </svg>
-                  <img v-else :src="`img/${image.source}`" :alt="image.name" />
-
-                  <div class="card-body">
-                    <h2 class="card-text h5">{{ image.name }}</h2>
-                    <p class="card-text">
-                      {{ image.name }} This is a wider card with supporting text
-                      below as a natural lead-in to additional content. This
-                      content is a little bit longer.
-                    </p>
-                    <div
-                      class="d-flex justify-content-between align-items-center"
-                    >
-                      <div class="btn-group">
-                        <button
-                          type="button"
-                          class="btn btn-sm btn-outline-secondary"
-                        >
-                          Ver no Maps
-                        </button>
-                      </div>
-                      <small class="text-muted">
-                        {{ image.create_at ? formatDate(image.create_at) : ''}}
-                      </small>
+                    <div class="btn-group">
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        Ver no Maps
+                      </button>
                     </div>
+                    <small class="text-muted">
+                      {{ image.create_at ? formatDate(image.create_at) : ''}}
+                    </small>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       <footer class="text-muted py-5">
         <div class="container">
@@ -251,15 +245,25 @@
             currentYear: new Date().getFullYear(),
             images: [
               {
-                name: "Praça das Etnias",
-                source: "p-gramado-borges-demedeiros.jpg",
+                name: "Av. Borges de Medeiros",
+                source: "gramado-av.-borges-demedeiros-p.jpg",
                 create_at: "2023-01-14",
+                description:
+                  "A Av. Borges de Medeiros é uma das principais avenidas de Gramado, localizada no centro da cidade. É conhecida por sua arquitetura charmosa, com lojas, restaurantes e cafés em estilo europeu.",
               },
               {
-                name: "Praça das Etnias",
+                name: "Igreja Matriz de São Pedro",
+                source: "gramado-igreja-matriz-sao-pedro-p.jpg",
+                create_at: "2023-01-05",
+                description:
+                  "A Igreja Matriz de São Pedro é um dos principais pontos turísticos de Gramado. Construída em 1935, a igreja é um dos principais símbolos da cidade e um dos mais belos exemplos de arquitetura neogótica do Brasil.",
               },
               {
-                name: "Praça das Etnias",
+                name: "Rua Torta",
+                source: "gramdo-rua-torta-p.jpg",
+                create_at: "2022-12-26",
+                description:
+                  "A Rua Torta é uma das principais atrações turísticas de Gramado. A rua é conhecida por sua arquitetura charmosa, com lojas, restaurantes e cafés em estilo europeu.",
               },
               {
                 name: "Praça das Etnias",
