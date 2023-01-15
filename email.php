@@ -1,12 +1,10 @@
 <?php
-// allow access from any domain
-header("Access-Control-Allow-Origin: *");
 
-// get the post parameters name, email e message
-$name = $_POST['name'];
-$email = $_POST['email'];
-$message = $_POST['message'];
-$message .= "de: " . $name . " email: " . $email;
+// get the name, email and message from body of the request
+$requestBody = json_decode(file_get_contents('php://input'), true);
+$name = $requestBody['name'];
+$email = $requestBody['email'];
+$message = $requestBody['message'];
 
 // check of all parameters are set
 if (isset($name) && isset($email) && isset($message)) {
