@@ -263,7 +263,43 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">...</div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="form-name" class="form-label"
+                  >Nome</label
+                >
+                <input
+                  v-model="form.name"
+                  type="text"
+                  class="form-control"
+                  id="form-name"
+                  placeholder="João Silva"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="form-email" class="form-label"
+                  >Email</label
+                >
+                <input
+                  v-model="form.email"
+                  type="email"
+                  class="form-control"
+                  id="form-email"
+                  placeholder="joao.silva@example.com"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="form-massage" class="form-label"
+                  >Escreva a sua mensagem</label
+                >
+                <textarea
+                  v-model="form.massage"
+                  class="form-control"
+                  id="form-massage"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -298,6 +334,13 @@
           return {
             // create te current year
             currentYear: new Date().getFullYear(),
+            // form
+            form: {
+              name: "",
+              email: "",
+              massage: "",
+            },
+            // cards
             images: [
               {
                 name: "Av. Borges de Medeiros",
