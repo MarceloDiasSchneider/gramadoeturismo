@@ -26,6 +26,18 @@
     ></script>
 
     <style>
+      .bg-main-image {
+        background-image: url("img/bg-main-gramado-borges-demedeiros.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+      }
+
+      .bg-custom {
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -80,7 +92,7 @@
     </style>
   </head>
   <body>
-    <main id="app">
+    <main id="app" class="bg-light">
       <header class="">
         <div class="collapse bg-dark" id="navbarHeader">
           <div class="container">
@@ -155,12 +167,11 @@
           </div>
         </div>
       </header>
-
-      <section class="py-5 text-center container">
+      <section class="py-5 text-center container bg-main-image my-2">
         <div class="row py-lg-5">
-          <div class="col-lg-7 col-md-9 mx-auto">
-            <h1 class="fw-light">Album de fotos de Gramado</h1>
-            <p class="lead text-muted">
+          <div class="col-lg-7 col-md-9 mx-auto bg-custom rounded">
+            <h1 class="fw-light m-2">Album de fotos de Gramado</h1>
+            <p class="lead">
               Este álbum de fotos mostra a beleza, arquitetura e cultura de
               Gramado, cidade localizada no sul do Brasil conhecida por seus
               chocolates artesanais e clima europeu. As fotos mostram atrações
@@ -266,19 +277,26 @@
                   "A Rua Torta é uma das principais atrações turísticas de Gramado. A rua é conhecida por sua arquitetura charmosa, com lojas, restaurantes e cafés em estilo europeu.",
               },
               {
-                name: "Praça das Etnias",
+                name: "Portico Gramado Nova Petropolis",
+                source: "gramado-portico-nova-petropolis-p.jpg",
+                create_at: "2022-12-17",
+                description:
+                  "O Portico Gramado Nova Petropolis é um dos principais pontos turísticos de Gramado. Construído em 1935, o portico é um dos principais símbolos da cidade e um dos mais belos exemplos de arquitetura neogótica do Brasil.",
               },
               {
-                name: "Praça das Etnias",
+                name: "Lago Negro",
+                source: "gramado-lago-negro-p.jpg",
+                create_at: "2022-12-08",
+                // uma descrição do lago negreo em gramado
+                description:
+                  "O Lago Negro é um dos principais pontos turísticos de Gramado. Ele é cercado por belas paisagens naturais e oferece uma variedade de atividades ao ar livre, como passeios de barco e caminhadas.",
               },
               {
-                name: "Praça das Etnias",
-              },
-              {
-                name: "Praça das Etnias",
-              },
-              {
-                name: "Praça das Etnias",
+                name: "Mirante belvedere",
+                source: "gramado-mirante-belvedere-p.jpg",
+                create_at: "2022-11-29",
+                description:
+                  "O Mirante Belvedere é um dos principais pontos turísticos de Gramado. Construído em 1935, o mirante é um dos principais símbolos da cidade e um dos mais belos exemplos de arquitetura neogótica do Brasil.",
               },
             ],
           };
