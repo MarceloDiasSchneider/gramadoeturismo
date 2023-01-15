@@ -260,6 +260,7 @@
                 Deixe sua mensagem
               </h1>
               <button
+                @click="resetForm()"
                 type="button"
                 class="btn-close"
                 data-bs-dismiss="modal"
@@ -306,6 +307,7 @@
             </div>
             <div class="modal-footer">
               <button
+                @click="resetForm()"
                 type="button"
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
@@ -427,6 +429,7 @@
                 message: this.form.message,
               })
               .then((response) => {
+                this.resetForm();
                 this.form.alert_status = "alert-success";
                 this.form.status = "Mensagem enviada com sucesso";
               })
@@ -437,6 +440,14 @@
                 // stop loading
                 this.form.loading = false;
               });
+          },
+          // reset form
+          resetForm() {
+            this.form.name = "";
+            this.form.email = "";
+            this.form.message = "";
+            this.form.alert_status = "";
+            this.form.status = "";
           },
           // format date from '2023-01-14' to 'Segunda-feira, 14 de Janeiro de 2023'
           formatDate(date) {
