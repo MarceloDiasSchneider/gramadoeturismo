@@ -1,5 +1,6 @@
 <?php
-
+// allow access from any domain
+header("Access-Control-Allow-Origin: *");
 
 // get the post parameters name, email e message
 $name = $_POST['name'];
