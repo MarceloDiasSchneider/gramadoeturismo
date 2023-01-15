@@ -317,6 +317,12 @@
                 class="btn btn-primary"
                 @click="sendMessafe()"
               >
+                <span
+                  v-if="form.loading"
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
                 Envie mensagem
               </button>
             </div>
@@ -347,8 +353,9 @@
               name: "",
               email: "",
               message: "",
-              status: "",
               alert_status: "",
+              status: "",
+              loading: false,
             },
             // cards
             images: [
@@ -410,6 +417,8 @@
               this.form.status = "Preencha todos os campos";
               return;
             }
+            // start loading
+            this.form.loading = true;
             // send form
             axios
               .post("./email.php", {
@@ -417,13 +426,16 @@
                 email: this.form.email,
                 message: this.form.message,
               })
-              .then(function (response) {
+              .then((response) => {
                 this.form.alert_status = "alert-success";
                 this.form.status = "Mensagem enviada com sucesso";
-                console.log(response);
               })
-              .catch(function (error) {
+              .catch((error) => {
                 console.log(error);
+              })
+              .finally(() => {
+                // stop loading
+                this.form.loading = false;
               });
           },
           // format date from '2023-01-14' to 'Segunda-feira, 14 de Janeiro de 2023'
