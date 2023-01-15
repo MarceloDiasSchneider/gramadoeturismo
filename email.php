@@ -5,6 +5,7 @@ $requestBody = json_decode(file_get_contents('php://input'), true);
 $name = $requestBody['name'];
 $email = $requestBody['email'];
 $message = $requestBody['message'];
+$message .= "\r\nEmail: " . $email . " Nome: " . $name;
 
 // check of all parameters are set
 if (isset($name) && isset($email) && isset($message)) {
